@@ -49,8 +49,6 @@ class ProgrammationDynamique:
         debitsturbines = np.zeros(5)
         pmw = np.zeros(5)
         stepdispo = self.StepMaxDebit
-        print(self.Resultats)
-        print(self.modeles.turbine2(117,34.1))
         for i in range(5):
             etat_optimal = self.Resultats[i, stepdispo]
             debitsturbines[i] = etat_optimal*5
