@@ -18,6 +18,9 @@ for i in range(100):
     diffpower[i] = pmwtot - pmwreel
 
 print(diffpower)
+print(min(diffpower))
+print(max(diffpower))
+print(sum(diffpower))
 
 # hchute = datas['Niv Amont (m)'].loc[0] - datas['Elav (m)'].loc[0]
 # Qtot = datas['Qtot (m3/s)'].loc[0]
