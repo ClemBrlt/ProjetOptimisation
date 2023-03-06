@@ -6,24 +6,21 @@ class ProgrammationDynamique:
 
     DebitsMax = np.zeros(5)
     Pas = 5
-    EtatsMax = np.zeros(5)
-    DebitDispo = 200
-    StepMaxDebit = DebitDispo/Pas
-    Hchute = 100
-    Resultats = np.zeros(5, StepMaxDebit+1)
+    EtatsMax = np.zeros(5, dtype='int')
     modeles = FonctionsProduction()
 
     def __init__(self, debitsmax, debitdispo, hchute):
         self.DebitsMax = debitsmax
         for i in range(5):
-            self.EtatsMax[i] = self.DebitsMax[i] / self.Pas
+            self.EtatsMax[i] = int(self.DebitsMax[i] / self.Pas)
         self.DebitDispo = self.Pas * round(debitdispo/self.Pas)
-        self.StepMaxDebit = self.DebitDispo / self.Pas
+        self.StepMaxDebit = int(self.DebitDispo / self.Pas)
+        self.Resultats = np.zeros([5, self.StepMaxDebit + 1], dtype='int')
         self.Hchute = hchute
 
     def calcstep(self, resultatsprecpow, step, stepmindebit):
         newresultatspow = np.zeros(self.StepMaxDebit + 1)
-        newresultatsdeb = np.zeros(self.StepMaxDebit + 1)
+        newresultatsdeb = np.zeros(self.StepMaxDebit + 1, dtype='int')
         for i in range(stepmindebit, self.StepMaxDebit + 1):
             pmw = resultatsprecpow[i]
             debitopti = 0
@@ -37,7 +34,7 @@ class ProgrammationDynamique:
         return newresultatspow, newresultatsdeb
 
     def fillresult(self):
-        tabpow = np.zeros(self.StepMaxDebit)
+        tabpow = np.zeros(self.StepMaxDebit+1)
         stepmin = self.StepMaxDebit
         for i in range(5):
             stepmin -= self.EtatsMax[i]
@@ -50,11 +47,13 @@ class ProgrammationDynamique:
     def solve(self):
         self.fillresult()
         debitsturbines = np.zeros(5)
-        pmw = 0
+        pmw = np.zeros(5)
         stepdispo = self.StepMaxDebit
+        print(self.Resultats)
+        print(self.modeles.turbine2(117,34.1))
         for i in range(5):
             etat_optimal = self.Resultats[i, stepdispo]
             debitsturbines[i] = etat_optimal*5
             stepdispo -= etat_optimal
-            pmw += self.modeles.productionturbinei(etat_optimal*self.Pas, self.Hchute, i)
+            pmw[i] = self.modeles.productionturbinei(etat_optimal*self.Pas, self.Hchute, i)
         return debitsturbines, pmw

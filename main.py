@@ -1,16 +1,21 @@
-# This is a sample Python script.
-
-# Press Maj+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import pandas as pd
+from AlgoDynamique import ProgrammationDynamique
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+datas = pd.read_excel('DataProjet2023.xlsb', engine='pyxlsb', usecols='B,C,F', header = 2, nrows=100)
 
+# for i in range(100):
+#     hchute = datas['Niv Amont (m)'].loc[i] - datas['Elav (m)'].loc[i]
+#     Qtot = datas['Qtot (m3/s)'].loc[i]
+#     print(hchute)
+#     print(Qtot)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+hchute = datas['Niv Amont (m)'].loc[0] - datas['Elav (m)'].loc[0]
+Qtot = datas['Qtot (m3/s)'].loc[0]
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+debitsmax = [160, 160, 160, 160, 160]
+solveur = ProgrammationDynamique(debitsmax,Qtot,hchute)
+debitsturbs,pmw = solveur.solve()
+
+print(debitsturbs)
+print(pmw)
