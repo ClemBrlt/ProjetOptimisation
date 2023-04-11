@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nomad_lib.MPI", "nomad_lib.MPI.vcxproj", "{FBB640B4-E68B-4EBA-B49C-3EC485FB488E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nomad.MPI", "nomad.MPI.vcxproj", "{46CB38A8-525F-4564-B25A-A4F9A13DAC4B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FBB640B4-E68B-4EBA-B49C-3EC485FB488E} = {FBB640B4-E68B-4EBA-B49C-3EC485FB488E}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBB640B4-E68B-4EBA-B49C-3EC485FB488E}.Release|x64.ActiveCfg = Release|x64
+		{FBB640B4-E68B-4EBA-B49C-3EC485FB488E}.Release|x64.Build.0 = Release|x64
+		{46CB38A8-525F-4564-B25A-A4F9A13DAC4B}.Release|x64.ActiveCfg = Release|x64
+		{46CB38A8-525F-4564-B25A-A4F9A13DAC4B}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
