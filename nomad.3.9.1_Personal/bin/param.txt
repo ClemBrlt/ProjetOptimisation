@@ -16,13 +16,12 @@ BB_OUTPUT_TYPE OBJ PB EB     # takes in argument the name of
                               #  options are described in the
                               #  detailed parameters list)
 
-X0             ( 0 0 0 0 0 500 34)  # starting point
+X0             ( 0 0 0 0 0 538.8 34.30)  # starting point
 
-LOWER_BOUND    ( 0 0 0 0 0 500 34 )           # 
-UPPER_BOUND    ( 150 150 150 150 150 500 34 )  # 
-                              # x_4 and x_5 have no bounds
-
-MAX_BB_EVAL    100            # the algorithm terminates when
+LOWER_BOUND    ( 0 0 0 0 0 538.8 34.30 )           #
+UPPER_BOUND    ( 160 160 160 160 160 538.8 34.30 )  # all are bounded
+                                                                                                                                                                                                                                                                                                                                                                          
+MAX_BB_EVAL    150            # the algorithm terminates when
                               # 100 black-box evaluations have
                               # been made
 

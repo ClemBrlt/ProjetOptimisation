@@ -82,12 +82,12 @@ int main ( int argc , char ** argv ) {
     for ( int i = 0 ; i < 7 ; i++ ) {
       in >> x[i];
     }
-    f = turbine1(x[0],x[6]) + turbine2(x[1], x[6]) + turbine3(x[2], x[6]) + turbine4(x[3], x[6]) + turbine5(x[4], x[6]);
+    f = -(turbine1(x[0],x[6]) + turbine2(x[1], x[6]) + turbine3(x[2], x[6]) + turbine4(x[3], x[6]) + turbine5(x[4], x[6]));
     if ( in.fail() )
       f = c1 = c2 = 1e20;
     else {
-      c1 = -x[0] - x[1] - x[2] - x[3] - x[4] + x[5] - 1e-20;
-      c2 = x[0] + x[1] + x[2] + x[3] + x[4] - x[5] - 1e-20;
+      c1 = -x[0] - x[1] - x[2] - x[3] - x[4] + x[5] - 2.6;
+      c2 = x[0] + x[1] + x[2] + x[3] + x[4] - x[5] - 2.6;
     }
     in.close();
   }
